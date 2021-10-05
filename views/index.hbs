@@ -2,7 +2,7 @@
   <div class="card mx-auto" style="width: 40rem;">
     <img src="/bojackAvatar.png" class="card-img-top" alt="...">
     <div class="card-body">
-      {{#unless data}}
+      {{#unless isLogin}}
       <h5 class="card-title ml-2">Account Login</h5>
       <form action="/login" method="POST">
         <div class="input-group mb-3 ">
@@ -13,20 +13,26 @@
         </div>
         <button class="btn btn-outline-primary ml-2" type="submit">登錄</button>
       </form>
+      {{#if isLogin}}
+      <form action="/logout" method="POST">
+        <button class="btn btn-outline-primary ml-2" type="submit">登出</button>
+      </form>
+      {{/if}}
       {{/unless}}
-      {{#if data}}
+      {{#if isLogin}}
       <div class="alert alert-success mt-2" role="alert">
         <h4 class="alert-heading">成功登陸!</h4>
         <p>恭喜發財</p>
         <hr>
-        <a href="/">
-          <button class="btn btn-outline-primary">再玩一次</button>
-        </a>
+        <form action="/logout" method="POST">
+          <button class="btn btn-outline-primary">登出</button>
+        </form>
+
       </div>
       {{/if}}
-      {{#if warning}}
+      {{#if isWrong}}
       <div class="alert alert-danger mt-2" role="alert">
-        登錄失敗！{{warning}}
+        登錄失敗！'please try again!'
       </div>
       {{/if}}
     </div>

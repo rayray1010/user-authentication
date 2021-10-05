@@ -15,6 +15,8 @@
   <nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="/">Navbar</a>
+      <div>Name: {{#if firstName}}{{firstName}}{{/if}}</div>
+      <div>Is log in: {{isLogin}}</div>
     </div>
   </nav>
   {{{body}}}
